@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_120844) do
+ActiveRecord::Schema.define(version: 2020_11_29_130513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_07_120844) do
     t.boolean "trade_able"
     t.integer "traded_from_id", default: 0
     t.boolean "traded_before", default: false
+    t.string "downcase_title"
   end
 
   create_table "comments", force: :cascade do |t|
