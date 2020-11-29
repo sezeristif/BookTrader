@@ -14,6 +14,6 @@ class User < ApplicationRecord
   private
 
   def set_username
-    self.username = email.split('@').first.capitalize
+    self.username = email.split("@").first.capitalize
   end
 end

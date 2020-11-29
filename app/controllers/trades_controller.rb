@@ -1,8 +1,7 @@
 class TradesController < ApplicationController
-
   def index
     @book = Book.find(params[:book_id])
-    @books = current_user.books.map{ |book| [ book.title, book.id]}
+    @books = current_user.books.map { |book| [book.title, book.id] }
   end
 
   def show
@@ -15,10 +14,10 @@ class TradesController < ApplicationController
     @book = Book.find(params[:book_id])
     @trade = Trade.create!(user_id: current_user.id,
                            offered_book_id: params[:post][:given_id],
-                           book_id: params[:book_id]) 
+                           book_id: params[:book_id])
     if @trade.save
-      flash[:notice] = 'Trade succesfully started.'
-    redirect_to books_path
+      flash[:notice] = "Trade succesfully started."
+      redirect_to books_path
     end
   end
 
@@ -34,22 +33,21 @@ class TradesController < ApplicationController
 
     trade.update(trade_status: 1)
 
-    flash[:notice] = 'Traded books successfully'
+    flash[:notice] = "Traded books successfully"
     redirect_to user_path(current_user)
   end
 
   def reject_trade
     @trade = Trade.find(params[:id])
     @trade.update(trade_status: -1)
-    flash[:alert] = 'Trade rejected.'
+    flash[:alert] = "Trade rejected."
     redirect_to user_path(current_user)
   end
 
   def destroy
     @trade = Trade.find(params[:id])
     @trade.destroy
-    flash[:alert] = 'Your Trade Request Cancelled.'
+    flash[:alert] = "Your Trade Request Cancelled."
     redirect_to user_path(current_user)
   end
-
 end

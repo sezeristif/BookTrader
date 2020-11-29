@@ -1,0 +1,85 @@
+# ALL
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - db/migrate/**
+    - config/routes.rb
+  TargetRubyVersion: 2.5
+
+# STYLE
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/NumericLiterals:
+  Enabled: No
+
+Style/FrozenStringLiteralComment:
+  Enabled: No
+
+Style/Documentation:
+  Enabled: No
+
+Style/SymbolArray:
+  Enabled: No
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/ClassCheck:
+  EnforcedStyle: kind_of?
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/BlockDelimiters:
+  Enabled: No
+
+# METRICS
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - spec/**/*.rb
+    - config/initializers/cognito_jwks.rb
+
+Metrics/MethodLength:
+  Max: 128
+
+Metrics/ClassLength:
+  Max: 1024
+
+Metrics/PerceivedComplexity:
+  Max: 32
+
+Metrics/CyclomaticComplexity:
+  Max: 32
+
+Metrics/AbcSize:
+  Max: 32
+  Exclude:
+    - db/seeds/**/*.rb
+
+Metrics/BlockLength:
+  Max: 64
+  Exclude:
+    - config/environments/*.rb
+    - config/routes.rb
+    - spec/**/*.rb
+
+# LINTER
+
+Lint/NonLocalExitFromIterator:
+  Enabled: No
+
+# LAYOUT
+
+Layout/MultilineMethodCallBraceLayout:
+  AutoCorrect: Yes
+
+# NAMING
+
+Naming/PredicateName:
+  Exclude:
+    - app/modules/uid.rb

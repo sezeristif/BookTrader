@@ -1,17 +1,15 @@
-require 'faker'
+require "faker"
 
-User.create(email: 'Sezer@gmail.com', password: 'asdfgh')
-User.create(email: 'Emir@gmail.com', password: 'asdfgh')
-User.create(email: 'Hasan@gmail.com', password: 'asdfgh')
-User.create(email: 'Osman@gmail.com', password: 'asdfgh')
-User.create(email: 'Ebrar@gmail.com', password: 'asdfgh')
-User.create(email: 'Merve@gmail.com', password: 'asdfgh')
-User.create(email: 'Zeynep@gmail.com', password: 'asdfgh')
-User.create(email: 'Orhan@gmail.com', password: 'asdfgh')
-User.create(email: 'Idil@gmail.com', password: 'asdfgh')
-User.create(email: 'Kerem@gmail.com', password: 'asdfgh')
-
-
+User.create(email: "Sezer@gmail.com", password: "asdfgh")
+User.create(email: "Emir@gmail.com", password: "asdfgh")
+User.create(email: "Hasan@gmail.com", password: "asdfgh")
+User.create(email: "Osman@gmail.com", password: "asdfgh")
+User.create(email: "Ebrar@gmail.com", password: "asdfgh")
+User.create(email: "Merve@gmail.com", password: "asdfgh")
+User.create(email: "Zeynep@gmail.com", password: "asdfgh")
+User.create(email: "Orhan@gmail.com", password: "asdfgh")
+User.create(email: "Idil@gmail.com", password: "asdfgh")
+User.create(email: "Kerem@gmail.com", password: "asdfgh")
 
 3.times do
   Book.create(title: Faker::Book.title, author: Faker::Book.author, pages: Faker::Number.number(digits: 3), public: true, trade_able: true, user_id: 1)

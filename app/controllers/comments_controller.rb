@@ -7,14 +7,14 @@ class CommentsController < ApplicationController
 
   def approve
     @comment.update!(status: :approved)
-    flash[:notice] = 'Comment approved successfully.'
+    flash[:notice] = "Comment approved successfully."
     redirect_to user_comments_path
   end
 
   def reject
     @comment.update!(status: :rejected)
     redirect_to user_comments_path(current_user)
-    flash[:alert] = 'Comment Rejected'
+    flash[:alert] = "Comment Rejected"
   end
 
   def create
