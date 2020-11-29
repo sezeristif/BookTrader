@@ -25,7 +25,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
   get 'books/:book_id/trades/:trade_id', to: 'trades#show'
   root 'pages#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'search_results', to: 'books#search_results'
+  
 end

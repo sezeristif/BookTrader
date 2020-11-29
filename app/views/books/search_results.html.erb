@@ -1,0 +1,29 @@
+<h1>Search Results</h1>
+<hr>
+<% unless @visible_books.empty? %>
+  <div class="row mt-4">
+    <% @visible_books.each do |book| %>
+
+      <div class="col-6 ">
+        <div class="card border-dark">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-7">
+                <h5 class="card-title">Title: <%= book.title %></h5>
+                <p class="card-text">Author: <%= book.author %></p>
+              </div>
+              <% if user_signed_in? %>
+                <div class="col-sm-5">
+                  <%= link_to 'Show', book_path(book), class:"btn btn-block btn-lg btn-outline-secondary" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>There were no results</p>
+<% end %>
