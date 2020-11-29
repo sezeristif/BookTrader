@@ -6,9 +6,33 @@ For Styling: [bootstrap](https://getbootstrap.com/)
 
 For Authentication: [Devise](https://github.com/heartcombo/devise)
 
-For Debugging: [byebug](https://github.com/deivid-rodriguez/byebug)
+Application Link: [booktrader](https://infinite-fortress-91603.herokuapp.com/)
 
-Application Link: [booktraderapp.com](https://booktraderapp.herokuapp.com/)
+## Features
+
+### Testing
+Used Rspec and cappybara together for testing. 
+For all tests: Run in root directory of the project 
+```shell
+bundle exec rspec
+```
+
+Run for specific test:
+```shell
+bundle exec rspec spec/cappybara/signin_spec.rb
+```
+This command runs rspec cappybara spec with selenium driver. It opens a chrome tab and tests can be seen step by step.
+https://github.com/teamcapybara/capybara
+
+## Searchbar
+
+You can searh all books on the project with the searchbar inside the navigation bar. It searches the book titles in the database and show results on a different page.
+
+## DataTable
+
+Datatable is a js library. With datatable you can add advanced interaction controls to your html table and it is simple to use. You can test it with https://infinite-fortress-91603.herokuapp.com/books clicking this link.
+
+
 
 ## Installation
 
