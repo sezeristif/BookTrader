@@ -1,6 +1,5 @@
 <body>
-
-  <div class="jumbotron col-12 mt-2">
+  <div class="jumbotron col-12">
     <h1 class="display-4 text-center">Welcome To Books App!</h1>
     <p class="lead text-center my-4">BooksApp is a simple book trading platform.</p>
     <hr class="my-2">
@@ -11,12 +10,12 @@
      <% end %>
   </div>
 
-
-  <br><h1 class="text-center mt-2">All Public Books</h1>
+  <br>
+  <h1 class="text-center mt-2">All Public Books</h1>
   <hr>
+
   <div class="row mt-4">
     <% @visible_books.each do |book| %>
-
     <div class="col-6 ">
       <div class="card border-dark">
         <div class="card-body">
@@ -35,8 +34,11 @@
       </div>
       <br>
     </div>
-
     <% end %>
+  </div>
+
+  <div class="flickr_pagination">
+    <%= will_paginate @visible_books, :container => false %>
   </div>
 
 </body>
