@@ -1,0 +1,77 @@
+<br>
+<h1>Incoming Trades</h1>
+<hr>
+
+
+  <div class="row mt-4">
+  <% @books.each do |book| %>
+    <% if book.trades.any? && book.trades.last.trade_status == 'pending'%>
+    <% book.trades.each do |trade| %>
+      <div class="col-sm-6">
+
+        <div class="card border-dark">
+
+          <div class="card-body">
+
+            <div class="row">
+
+              <div class="col-sm-12">
+                <h4 class="card-title">User: <%=link_to "#{Book.find(trade.offered_book_id).user.username}", user_path(Book.find(trade.offered_book_id).user), class: "text-dark"%></h4>
+                <hr>
+                <h5 class="card-title">Requested Book: <%= trade.book.title %></h5>
+                <hr>
+                <h5 class="card-title">Offered Book: <%= Book.find(trade.offered_book_id).title %></h5>
+                <br>
+                <%= link_to 'Trade', "/books/#{trade.book_id}/trades/#{trade.id}", class:"btn btn-block btn-success text-white"%>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <% end %>
+     <% end %>
+    <% end %>
+    </div>
+  </div>
+
+
+<br>
+<h1>Outgoing Trades</h1>
+<hr>
+
+
+<div class="row mt-4">
+
+  <% @outgoing_trades.each do |trade| %>
+    <div class="col-sm-6">
+
+      <div class="card border-dark">
+
+        <div class="card-body">
+
+          <div class="row">
+
+            <div class="col-sm-12">
+              <h5 class="card-title">You requested for (<%= link_to "#{trade.book.title}", book_path(trade.book), class:"text-dark" %>) named book. //  From User: <%=link_to "#{trade.book.user.username}", user_path(trade.book.user), class:"text-dark" %></h5>
+              <hr>
+              <h5 class="card-title">You offered (<%= link_to "#{Book.find(trade.offered_book_id).title}", book_path(Book.find(trade.offered_book_id)), class:"text-dark" %>) named book.</h5>
+              <hr>
+              <h5 class="card-title">Trade Status: <%=trade.trade_status %></h5>
+              <br>
+              <% if trade.trade_status == 'pending' %>
+              <%= link_to 'Cancel Trade', "/books/#{trade.book.id}/trades/#{trade.id}", method: :delete, class: "btn btn-block btn-danger text-white", data: {confirm: 'Are you sure?'}  %>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+
+  <% end %>
+</div>
+</div>

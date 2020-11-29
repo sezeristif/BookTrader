@@ -1,0 +1,30 @@
+<h1 class="text-center mt-4">All Comments</h1>
+<hr>
+<div class="container">
+  <% @books.each do |book| %>
+    <% book.comments.order(created_at: :desc).each do |comment| %>
+      <div class="card border-dark mt-4">
+        <div class="card-header bg-secondary text-white">
+          Comment Title: <%= comment.title %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Comment:<%= comment.content  %></h5>
+          <p class="card-text">by User: <%=link_to "#{comment.user.username}", user_path(comment.user), class:"text-dark" %></p>
+          <p class="card-text">Book: <%=link_to "#{comment.book.title}", book_path(comment.book), class:"text-dark" %></p>
+          <p class="card-text">Comment Status: <%= comment.status %></p>
+
+          <% if comment.status.to_sym == :pending  %>
+            <%= link_to 'Approve', approve_user_comment_path(current_user, comment), class:"btn btn-outline-success", method: :post %>
+            <%= link_to 'Reject', reject_user_comment_path(current_user, comment) , class:"btn btn-outline-danger", method: :post %>
+          <% elsif comment.status.to_sym == :approved %>
+            <button type="button" class="btn btn-outline-success" disabled>Approve</button>
+            <%= link_to 'Reject', reject_user_comment_path(current_user, comment) , class:"btn btn-outline-danger", method: :post %>
+          <% else %>
+            <%= link_to 'Approve', approve_user_comment_path(current_user, comment), class:"btn btn-outline-success", method: :post %>
+            <button type="button" class="btn btn-outline-danger" disabled>Reject</button>
+        <% end %>
+        </div>
+      </div>
+    <% end  %>
+  <% end %>
+</div>

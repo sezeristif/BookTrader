@@ -1,0 +1,5 @@
+<% if @user == current_user %>
+<%= render 'users/dashboard' %>
+<% else  %>
+<%= render 'users/user' %>
+<% end %>

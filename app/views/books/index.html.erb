@@ -1,0 +1,48 @@
+
+
+<br><h1 class="text-center mt-2">All Public Books</h1>
+<hr>
+  <div class="row mt-4">
+      <% @visible_books.each do |book| %>
+
+        <div class="col-sm-6">
+
+          <div class="card border-dark">
+
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5 class="card-title">Title: <%= book.title %></h5>
+                  <p class="card-text">Author: <%= book.author %></p>
+                  <p class="card-text">Pages: <%= book.pages %></p>
+                  <p class="card-text">Shared User: <%= book.user.username %></p>
+                </div>
+
+                  <div class="col-sm-6">
+
+                    <% unless current_user == book.user %>
+                      <br><br>
+                      <%= link_to 'Show', book_path(book), class:"btn btn-block btn-sm btn-outline-success"%>
+                        <% if book.trade_able %>
+                          <%= link_to 'Trade', "books/#{book.id}/trades", class:"btn btn-block btn-sm btn-outline-success" %>
+                        <% end %>
+                    <% else %>
+                      <%= link_to 'Show', book_path(book), class:"btn btn-block btn-sm btn-outline-success"%>
+                      <%= link_to 'Edit', edit_book_path(book), class:"btn btn-block btn-sm btn-outline-secondary"%>
+                      <%= link_to 'Delete', book_path(book),class:"btn btn-block btn-sm btn-outline-danger", method: :delete, data: {confirm: 'Are you sure?'} %>
+                  <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        <% end %>
+      </div>
+  </div>
+
+
+
+  <br>
+  <%= link_to 'Create New Book', new_book_path, class:"btn btn-outline-secondary"%>

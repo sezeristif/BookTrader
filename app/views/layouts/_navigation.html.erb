@@ -1,0 +1,27 @@
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <% if user_signed_in? %>
+        <%= link_to "Profile: #{current_user.username}", user_path(current_user), class:"btn btn-light btn-lg btn-block"%>
+        <%= link_to 'All Public Books', books_path, class:"btn btn-light btn-lg btn-block"%>
+        <%= link_to 'All Users', users_path, class:"btn btn-light btn-lg btn-block" %>
+        <%= link_to 'Create New Book', new_book_path, class:"btn btn-light btn-lg btn-block"%>
+        <%= link_to 'Logout', destroy_user_session_path,method: :delete,class:"btn btn-light btn-lg btn-block"%>
+      <% else %>
+        <%= link_to 'Signup Now!', new_user_registration_path, class:"btn btn-light btn-lg btn-block"%>
+        
+        <%= link_to 'Sign In', new_user_session_path, class:"btn btn-light btn-lg btn-block"%>
+      <% end %>
+
+    </div>
+  </div>
+
+
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <%= link_to 'BooksApp', root_path, class:"navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </nav>
+</div>

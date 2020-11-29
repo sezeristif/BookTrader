@@ -1,0 +1,34 @@
+<br>
+<h1 class="text-center">Active Users</h1>
+<hr>
+<div class="row mt-4">
+  <% @users.each do |user| %>
+
+    <div class="col-sm-6">
+      <div class="card border-dark">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <h5 class="card-title">Username : <%= user.username %></h5>
+              <p class="card-text">Shared Public Books: <%= user.books.where(public: true).count %></p>
+              <p class="card-text">Joined At: <%= user.created_at %></p>
+            </div>
+
+            <div class="col-sm-6">
+              <br>
+              <%= link_to "User's Page", user_path(user), class:"btn btn-block btn-sm btn-outline-secondary"%>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+  <% end %>
+</div>
+
+
+</div>
+

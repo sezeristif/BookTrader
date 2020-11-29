@@ -1,0 +1,42 @@
+<div class="col-6 mx-auto">
+  <div class="card text-center border-dark mt-4">
+    <div class="card-header border-dark bg-secondary text-white">
+      Shared by User: <%= link_to "#{@book.user.username}", user_path(@book.user), class:"text-white"%>
+    </div>
+    <div class="card-body border-dark">
+      <h5 class="card-title"><%= @book.title %></h5>
+      <p class="card-text">Author: <%= @book.author %></p>
+      <p>Pages: <%= @book.pages %></p>
+        <% if @book.trade_able && @book.user != current_user %>
+          <%= link_to 'Trade', "#{@book.id}/trades", class: "btn btn-outline-success" %>
+        <% end %>
+    </div>
+    <div class="card-footer text-muted">
+      <%= @book.created_at %>
+    </div>
+  </div>
+</div>
+<br>
+
+<% unless @book.comments == [] %>
+  <hr>
+  <h1 class="text-center">Comments</h1>
+
+<% end %>
+
+  <div class="row mt-4" id="comments">
+    <% @book.comments.each do |comment| %>
+      <%= render partial: 'comments/comment', :locals => { :comment => comment } %>
+    <% end %>
+  </div>
+
+<hr>
+<br>
+<%= render '/comments/form' %>
+
+
+<br>
+<hr>
+
+<%= link_to 'Back to Profile', user_path(current_user) %>|
+<%= link_to 'Back to Books', books_path %>

@@ -1,0 +1,55 @@
+<%= form_with(model: book, local: true) do |f| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form>
+      <div class="form-group row">
+          <%= f.label :title, class:"col-sm-2 col-form-label"%>
+        <div class="col-sm-10">
+          <%= f.text_field :title, autofocus: true, placeholder:"title", class:"form-control" %>
+        </div>
+      </div>
+      <div class="form-group row">
+          <%= f.label :author, class:"col-sm-2 col-form-label"%> 
+        <div class="col-sm-10">    
+          <%= f.text_field :author, class:"form-control", placeholder:"author" %>
+      </div>
+    </div>
+      <div class="form-group row">
+        <%= f.label :pages, class:"col-sm-2 col-form-label" %>    
+          <div class="col-sm-10">    
+        <%= f.number_field :pages, class:"form-control", placeholder:"pages"%> 
+        </div>
+      </div>
+    
+      <div class="form-group row">
+        <%= f.label :public, class:"col-sm-2 col-form-label" %>    
+          <div class="col-sm-10">    
+        <%= f.check_box :public, class:""%> 
+        </div>
+      </div>
+
+    <div class="form-group row">
+      <%= f.label :trade_able, class:"col-sm-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.check_box :trade_able, class:""%>
+      </div>
+    </div>
+    
+
+    <div class="form-group row justify-content-center">
+        <div class="col-sm-8">
+          <%= f.submit "Submit",class:"btn btn-outline-secondary"%>
+        </div>
+      </div> 
+  </form> 
+<% end %>  

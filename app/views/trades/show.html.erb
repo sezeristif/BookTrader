@@ -1,0 +1,47 @@
+<br>
+<h1>Trading</h1>
+<hr>
+
+
+<div class="row mt-4">
+
+
+    <div class="col-sm-6">
+
+      <div class="card border-dark">
+
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-sm-6">
+              <h5 class="card-title">Title: <%= @book1.title %></h5>
+              <p class="card-text">The Book Which You Will Give</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+  <div class="col-sm-6">
+
+    <div class="card border-dark">
+
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-sm-6">
+            <h5 class="card-title">Title: <%= @book2.title %></h5>
+            <p class="card-text">The Book Which You Will Take</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+
+</div>
+</div>
+
+<%= link_to 'Accept Trade', "#{@trade.id}/accept_trade", method: :post, class:"btn btn-outline-success" %>
+<%= link_to 'Reject Trade', "#{@trade.id}/reject_trade", method: :post, class:"btn btn-outline-danger" %>

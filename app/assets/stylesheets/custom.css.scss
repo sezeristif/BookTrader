@@ -1,0 +1,17 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.background {
+  background-color: #dfe6e9;
+
+}
+.jumbotron {
+  background-image: asset-url('jumbo.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 350px;
+}
+
+.card {
+
+}

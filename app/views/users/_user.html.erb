@@ -1,0 +1,46 @@
+<div class="card text-center bg-transparent border-dark mt-4">
+  <div class="card-header border-dark mt-8 bg-secondary text-white">
+    Profile Page
+  </div>
+  <div class="card-body border-dark">
+    <h5 class="card-title"><%= @user.username %>'s Profile</h5>
+    <p class="card-text"><%= @user.email %></p>
+  </div>
+</div>
+
+
+
+
+  <% unless @visible_books == [] %>
+  <h1 class="text-center mt-4">User's Public Books</h1>
+  <hr>
+    <div class="row">
+      <% @visible_books.each do |book| %>
+        <div class="col-sm-6 mt-4">
+
+          <div class="card border-dark">
+            <div class="card-header bg-secondary text-white">
+              Author: <%= book.author %>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5 class="card-title">Title: <%= book.title  %></h5>
+                  <p class="card-text"><%= book.pages %> pages</p>
+                </div>
+
+                <div class="col-sm-6">
+                  <%= link_to 'Show Book', book_path(book),class:"btn btn-outline-success btn-block"%>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+  <h1 class="text-center mt-4">User have not add any books yet.</h1>
+  <hr>
+  <% end %>

@@ -1,0 +1,41 @@
+<% if comment.user_id == current_user.id && comment.status.to_sym == :pending %>
+  <div class="col-sm-6" >
+
+    <div class="card border-dark">
+      <div class="card-header bg-secondary text-white">
+        <%= comment.user.username %>'s Comment
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Comment Title: <%= comment.title %></h5>
+        <hr>
+        <h5 class="card-title">Comment: <%= comment.content  %></h5>
+        <hr>
+        <h5 class="card-title">Status: <%= comment.status  %></h5>
+      </div>
+
+    </div>
+    <br>
+  </div>
+
+  <% elsif comment.status.to_sym == :approved %>
+
+  <div class="col-sm-6" >
+
+    <div class="card border-dark">
+      <div class="card-header">
+        <%= comment.user.username %>'s Comment
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Comment Title: <%= comment.title %></h5>
+        <hr>
+        <h5 class="card-title">Content: <%= comment.content  %></h5>
+        <% if comment.book.user == current_user %>
+        <h5 class="card-title">Status: <%= comment.status  %></h5>
+        <% end %>
+      </div>
+
+    </div>
+    <br>
+  </div>
+
+<% end %>

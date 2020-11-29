@@ -1,0 +1,17 @@
+<h1>Leave Comment</h1>
+<%= form_with(model: [ @book, @comment ], local: false) do |f|%>
+  <form>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class:"form-control", placeholder:"Comment Title"  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, class:"form-control", placeholder:"Comment Content"  %>
+      <small id="emailHelp"></small>
+    </div>
+    <br>
+    <%= f.submit "Comment", class:"btn btn-secondary", id: "reset" %>
+  </form>
+<% end %>
+

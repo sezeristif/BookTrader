@@ -1,0 +1,70 @@
+<% unless @pending_comments.nil? %>
+  <% @pending_comments.each do |comment| %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <%= comment.user.username %>' named user commented your <%= comment.book.title %> named book. Click to see details.
+      <%= link_to "Comment Details", user_comments_path(current_user) %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="card text-center bg-transparent border-dark mt-4">
+  <div class="card-header border-dark text-bold bg-secondary text-white">
+    Profile Page
+  </div>
+  <div class="card-body ">
+    <h5 class="card-title "> <%= current_user.username %>'s Profile</h5>
+    <p class="card-text">You can see all your books in this page.</p>
+    <%= link_to 'Comment Requests', user_comments_path(current_user), class:"btn btn-outline-primary" %>
+    <%= link_to 'Create New Book', new_book_path, class:"btn btn-outline-success"%>
+    <% unless @books == [] %>
+      <%= link_to 'Trade Requests', trade_requests_user_path, class:"btn btn-outline-primary" %>
+    <% end %>
+    <%= link_to 'Edit Profile', edit_user_registration_path(current_user), class:"btn btn-outline-danger"%>
+  </div>
+</div>
+
+
+<% unless @books == [] %>
+<h1 class="text-center mt-4">Your Books</h1>
+<hr>
+    <div class="row" id="card-row">
+      <% @books.each do |book| %>
+        <div class="col-sm-6 mt-4">
+
+          <div class="card border-dark">
+            <div class="card-header bg-secondary text-white">
+              Author: <%= book.author %>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h5 class="card-title">Title: <%= book.title  %></h5>
+                  <p class="card-text"><%= book.pages %> pages</p>
+                  <p class="card-text">Shareable : <%= book.public %> </p>
+                  <p class="card-text">Tradeable : <%= book.trade_able %>
+                    <% if book.traded_before %>
+                    | Traded From : <%= link_to "#{User.find(book.traded_from_id).username}", user_path(User.find(book.traded_from_id)), class:"text-dark" %>
+                  <% end %>
+                  </p>
+
+
+                </div>
+
+                <div class="col-sm-6">
+                  <%= link_to 'Show Book', book_path(book),class:"btn btn-outline-success"%>
+                  <%= link_to 'Edit Book', edit_book_path(book),class:"btn btn-outline-secondary"%>
+                  <%= link_to 'Delete Book', book_path(book),class:"btn btn-outline-danger", method: :delete, data: {confirm: 'Are you sure?'} %>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+<% else %>
+  <h1 class="text-center mt-4">You have not add any books yet.</h1>
+  <hr>
+<% end %>
+

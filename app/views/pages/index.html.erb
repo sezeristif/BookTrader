@@ -1,0 +1,42 @@
+<body>
+
+  <div class="jumbotron col-12 mt-2">
+    <h1 class="display-4 text-center">Welcome To Books App!</h1>
+    <p class="lead text-center my-4">BooksApp is a simple book trading platform.</p>
+    <hr class="my-2">
+    <p class="text-center">by Sezer İstif</p>
+    <% unless user_signed_in? %>
+    <%= link_to 'Signup Now!', new_user_registration_path, class:"btn btn-outline-secondary btn-lg btn-block text-dark"%>
+    <%= link_to 'Sign In', new_user_session_path, class:"btn btn-outline-secondary btn-lg btn-block text-dark"%>
+     <% end %>
+  </div>
+
+
+  <br><h1 class="text-center mt-2">All Public Books</h1>
+  <hr>
+  <div class="row mt-4">
+    <% @visible_books.each do |book| %>
+
+    <div class="col-6 ">
+      <div class="card border-dark">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-7">
+              <h5 class="card-title">Title: <%= book.title %></h5>
+              <p class="card-text">Author: <%= book.author %></p>
+            </div>
+            <% if user_signed_in? %>
+            <div class="col-sm-5">
+              <%= link_to 'Show', book_path(book), class:"btn btn-block btn-lg btn-outline-secondary" %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <% end %>
+  </div>
+
+</body>

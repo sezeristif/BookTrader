@@ -1,0 +1,16 @@
+<br>
+<h2>Trade for '<%= @book.title %>' named book.</h2>
+<hr>
+<p>Select a book from your books.</p>
+<%= form_with(model: @trade, local: false) do |f| %>
+  <form>
+    <div class="form-group">
+
+      <%= select(:post, :given_id, @books) %>
+
+    </div>
+    <br>
+    <%= f.submit "Trade", class:"btn btn-secondary" %>
+  </form>
+<% end %>
+
