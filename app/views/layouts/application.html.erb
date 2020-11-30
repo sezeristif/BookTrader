@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BooksApp</title>
+    <title>BooksTrader</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +10,10 @@
   </head>
 
   <body class="background">
-    <br><br>
+    <br>
     <%= render 'layouts/navigation' %>
     <%= render 'layouts/messages' %>
+    <br>
     <%= yield %>
   </body>
 </html>
