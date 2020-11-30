@@ -17,7 +17,7 @@
 #
 require "simplecov"
 require "coveralls"
-require 'capybara/rspec'
+require "capybara/rspec"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
