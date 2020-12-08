@@ -9,7 +9,7 @@ class Book < ApplicationRecord
 
   def self.search(search)
     if search
-      where(["downcase_title LIKE ?", "%#{search}%"])
+      where(["downcase_title LIKE ?", "%#{search.downcase}%"])
     else
       all
     end
