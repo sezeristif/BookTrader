@@ -3,6 +3,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require('datatables.net-bs4')
+require('jquery')
 
 import "bootstrap"
 
@@ -11,3 +12,4 @@ var jQuery = require('jquery')
 global.$ = global.jQuery = jQuery;
 window.$ = window.jQuery = jQuery;
 global.$ = jQuery;
+
