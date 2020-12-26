@@ -5,8 +5,10 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
-    @visible_books = @books.where(public: true)
+    respond_to do |format|
+      format.html
+      format.json { render json: BookDatatable.new(params) }
+    end
   end
 
   # GET /books/1

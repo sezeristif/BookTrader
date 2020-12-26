@@ -58,6 +58,9 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ajax-datatables-rails (1.2.0)
+      railties (>= 5.0)
+      zeitwerk
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.4.8)
@@ -109,6 +112,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    jquery-datatables (1.10.20)
     json (2.3.1)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -275,6 +279,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ajax-datatables-rails
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
@@ -283,6 +288,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   jbuilder (~> 2.7)
+  jquery-datatables
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)

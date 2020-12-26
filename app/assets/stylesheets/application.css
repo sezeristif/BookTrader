@@ -12,5 +12,6 @@
  *
  *= require bootstrap
  *= require_tree .
+*= require datatables
  *= require_self
  */
