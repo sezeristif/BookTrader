@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "signed in users", type: :system do
+RSpec.describe "signed in users", type: :feature do
   load "#{Rails.root}/db/seeds.rb"
 
   before(:all) do
