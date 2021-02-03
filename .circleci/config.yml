@@ -4,13 +4,13 @@ orbs:
   ruby: circleci/ruby@1.1.1
   node: circleci/node@4.1.0
   browser-tools: circleci/browser-tools@1.1.1
-  aws-cli: circleci/aws-cli@1.2.1
+  rails: finalcad/rails@2.0.0
 
 
 jobs:
   test:
     docker:
-      - image: circleci/ruby:2.7.1-stretch-node-browsers
+      - image: circleci/ruby:2.7.1
       - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: postgres
@@ -64,4 +64,3 @@ workflows:
             branches:
               only:
                 - master
-                - testing
