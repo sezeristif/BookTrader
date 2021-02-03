@@ -8,7 +8,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: circleci/ruby:2.7.1-browser
+      - image: circleci/ruby:2.7.1-node-browser
       - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: postgres
@@ -39,14 +39,6 @@ jobs:
             google-chrome --version
             chromedriver --version
           name: Check install
-      - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
-      - run:
-          name: Start Selenium
-          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
-          background: true        
       - ruby/rspec-test
   build:
     docker:
