@@ -3,9 +3,6 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.1
   node: circleci/node@4.1.0
-  aws-cli: circleci/aws-cli@1.2.1
-  awsebcli: sbc-orbs/awsebcli@0.0.3
-  slack: circleci/slack@3.4.2
 
 jobs:
   test:
@@ -37,39 +34,16 @@ jobs:
       - ruby/rspec-test
   build:
     docker:
-      - image: circleci/ruby:2.5.1
+      - image: circleci/ruby:2.6.1
     steps:
       - checkout
       - setup_remote_docker
-      - aws-cli/setup:
-          version: '1'
       - run: sudo apt-get update
-      - awsebcli/install
       - run: echo $CIRCLE_BRANCH
       - run:
           name: Remove untracked files
           command: git clean -f
-      - run:
-          name: Releasing
-          command: |
-            if [ "$CIRCLE_BRANCH" == "master" ]
-            then
-            make release-production
-            cd container/production
-            sed -i "4s/latest/prod/" Dockerrun.aws.json
-            echo "Deploying to Prod"
-            eb deploy sms-fg-prod
-            elif [ "$CIRCLE_BRANCH" == "testing" ]
-            then
-            make release-testing
-            cd container/production
-            sed -i "4s/prod/latest/" Dockerrun.aws.json
-            echo "Deploying to Testing"
-            eb deploy sms-fg-testing
-            else
-            echo "Deployment must use testing or master branches"
-            fi
-      - slack/status
+
 workflows:
   version: 2
   build_environment:
