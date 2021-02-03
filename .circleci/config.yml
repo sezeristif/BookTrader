@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.1
   node: circleci/node@4.1.0
+  browser-tools: circleci/browser-tools@1.1.1
 
 jobs:
   test:
@@ -31,6 +32,21 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - run:
+          command: |
+            google-chrome --version
+            chromedriver --version
+          name: Check install
+      - run: mkdir test-reports
+      - run:
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true        
       - ruby/rspec-test
   build:
     docker:
@@ -43,7 +59,6 @@ jobs:
       - run:
           name: Remove untracked files
           command: git clean -f
-
 workflows:
   version: 2
   build_environment:
