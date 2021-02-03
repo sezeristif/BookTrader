@@ -8,8 +8,7 @@ orbs:
 jobs:
   test:
     docker:
-      - image: circleci/ruby:2.7.1
-      - image: circleci/node:jessie-browsers
+      - image: circleci/ruby:2.7.1-stretch-node-browsers
       - image: circleci/postgres:9.5-alpine
         environment:
           POSTGRES_USER: postgres
